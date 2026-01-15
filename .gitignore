@@ -13,3 +13,8 @@ ui_*.h
 Makefile* 
 .idea/ 
 .vscode/ 
+*.pro.user 
+build-*/ 
+debug/ 
+release/ 
+*.o 
