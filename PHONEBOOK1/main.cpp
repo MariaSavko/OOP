@@ -1,3 +1,4 @@
+// TASK 2: Qt GUI entry point 
 
 #include "mainwindow.h"
 

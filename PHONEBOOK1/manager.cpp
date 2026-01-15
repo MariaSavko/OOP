@@ -1,3 +1,4 @@
+// TASK 2: Using QFile for file operations (replaces std::fstream from Task 1) 
 
 #include "manager.h"
 #include <iostream>
