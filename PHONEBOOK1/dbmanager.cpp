@@ -22,7 +22,13 @@ DBManager::~DBManager()
 
 bool DBManager::initDatabase()
 {
+    qDebug() << "=== INIT DATABASE ===";
+    m_database = QSqlDatabase::addDatabase("QPSQL", "phonebook_connection");
+    qDebug() << "Host:" << "localhost";
+    qDebug() << "Database:" << "phonebook_db";
+    qDebug() << "User:" << "postgres";
     // Настройки подключения
+
     m_database.setHostName("localhost");
     m_database.setPort(5432);
     m_database.setDatabaseName("phonebook_db");
@@ -30,18 +36,18 @@ bool DBManager::initDatabase()
     m_database.setPassword("1932");
 
     if (!m_database.open()) {
-        qCritical() << "Cannot open database:" << m_database.lastError().text();
-        qCritical() << "Using file storage only";
+        qDebug() << "ERROR:" << m_database.lastError().text();
+        qDebug() << "Full error:" << m_database.lastError();
         return false;
     }
 
-    qDebug() << "Database connected successfully!";
-
+    qDebug() << "SUCCESS! Connected to PostgreSQL";
     if (!createTables()) {
-        qCritical() << "Failed to create tables";
-        return false;
-    }
+            qDebug() << "Failed to create tables";
+            return false;
+        }
 
+    qDebug() << "Tables created successfully";
     return true;
 }
 
